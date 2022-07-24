@@ -4,8 +4,6 @@ import java.util.LinkedList;
 import java.util.List;
 import java.util.Queue;
 
-import org.yaml.snakeyaml.util.ArrayUtils;
-
 class FirstNegativeIntegerInEveryWindowOfSizeK2
 
 {
