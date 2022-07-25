@@ -9,8 +9,7 @@ public class SumMinMaxSubArray {
 		System.out.println(sumMinMaxSubArrayBruteFroce(new Integer[] { 2, 5, -1, 7, -3, -1, -2 }, 4));
 	}
 
-	public static List<Integer> sumMinMaxSubArrayBruteFroce(Integer[] integers, int k) {
-		List<Integer> ans = new ArrayList<>();
+	public static int sumMinMaxSubArrayBruteFroce(Integer[] integers, int k) {
 		int sum = 0;
 		int max = Integer.MIN_VALUE;
 		int min = Integer.MAX_VALUE;
@@ -21,9 +20,9 @@ public class SumMinMaxSubArray {
 				min = Math.min(min, integers[j]);
 			}
 			System.out.println();
-			sum = max + min;
-			ans.add(sum);
+			sum += max + min;
 		}
-		return ans;
+		return sum;
 	}
+
 }
