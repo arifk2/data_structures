@@ -39,6 +39,39 @@ class Node {
 		return root;
 	}
 
+	public void buildBTFromLevelOrder(Node root) {
+		Scanner scanner = new Scanner(System.in);
+		Queue<Node> q = new LinkedList<>();
+		System.out.println("Enter the data for the root ");
+		int data = scanner.nextInt();
+
+		root = new Node(data);
+		q.add(root);
+
+		while (!q.isEmpty()) {
+			Node temp = q.peek();
+			q.poll();
+
+			System.out.println("Enter the data for the left node " + temp.data);
+			int leftData = scanner.nextInt();
+
+			if (leftData != -1) {
+				temp.left = new Node(leftData);
+				q.add(temp.left);
+			}
+
+			System.out.println("Enter the data for the right node " + temp.data);
+			int rightData = scanner.nextInt();
+
+			if (rightData != -1) {
+				temp.right = new Node(rightData);
+				q.add(temp.right);
+			}
+		}
+		// to print
+		levelOrderTraversalSeperator(root);
+	}
+
 	public void levelOrderTraversal(Node root) {
 		Queue<Node> q = new LinkedList<>();
 		q.add(root);
@@ -56,6 +89,7 @@ class Node {
 				q.add(temp.right);
 			}
 		}
+
 	}
 
 	public void levelOrderTraversalSeperator(Node root) {
@@ -87,10 +121,7 @@ class Node {
 	}
 
 	/**
-	 * LNR 
-	 * left 
-	 * Node(print) 
-	 * Right
+	 * LNR left Node(print) Right
 	 * 
 	 * @param root
 	 */
@@ -105,10 +136,8 @@ class Node {
 	}
 
 	/**
-	 * NLR
-	 * Node(print)
-	 * Left
-	 * Right
+	 * NLR Node(print) Left Right
+	 * 
 	 * @param root
 	 */
 	public void preOrder(Node root) {
@@ -119,39 +148,37 @@ class Node {
 		preOrder(root.left);
 		preOrder(root.right);
 	}
-	
+
 	/**
-	 * LRN
-	 * Left
-	 * Right
-	 * Node(print)
+	 * LRN Left Right Node(print)
+	 * 
 	 * @param root
 	 */
 	public void postOrder(Node root) {
-		if(root == null) {
+		if (root == null) {
 			return;
 		}
 		postOrder(root.left);
 		postOrder(root.right);
-		System.out.print(root.data+" ");
-		
+		System.out.print(root.data + " ");
+
 	}
 
 	public int main() {
 		Node root = null;
-		root = buildTree(root); // 1 3 7 -1 -1 11 -1 -1 5 17 -1 -1 -1
-		System.out.println("Printing Level traversal");
-		levelOrderTraversal(root);
-		System.out.println();
-		levelOrderTraversalSeperator(root);
-		System.out.println("Print InOrder Traversal");
-		inOrder(root);
-		System.out.println();
-		System.out.println("Print PreOrder Traversal");
-		preOrder(root);
-		System.out.println();
-		System.out.println("Print postOrder Traversal");
-		postOrder(root);
+		/*
+		 * root = buildTree(root); // 1 3 7 -1 -1 11 -1 -1 5 17 -1 -1 -1
+		 * System.out.println("Printing Level traversal"); levelOrderTraversal(root);
+		 * System.out.println(); levelOrderTraversalSeperator(root);
+		 * System.out.println("Print InOrder Traversal"); inOrder(root);
+		 * System.out.println(); System.out.println("Print PreOrder Traversal");
+		 * preOrder(root); System.out.println();
+		 * System.out.println("Print postOrder Traversal"); postOrder(root);
+		 * System.out.println();
+		 */
+
+		buildBTFromLevelOrder(root); // 1 3 5 7 11 17 -1 -1 -1 -1 -1 -1 -1
+
 		System.out.println();
 		return 0;
 	}
