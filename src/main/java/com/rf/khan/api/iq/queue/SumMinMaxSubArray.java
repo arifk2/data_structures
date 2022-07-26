@@ -7,7 +7,7 @@ public class SumMinMaxSubArray {
 
 	public static void main(String[] args) {
 		System.out.println(sumMinMaxSubArrayBruteForce(new Integer[] { 2, 5, -1, 7, -3, -1, -2 }, 4));
-		System.out.println(sumMinMaxSubArrayBruteUsingQueue(new Integer[] { 2, 5, -1, 7, -3, -1, -2 }, 4));
+		System.out.println(sumMinMaxSubArrayUsingQueue(new Integer[] { 2, 5, -1, 7, -3, -1, -2 }, 4));
 	}
 
 	public static int sumMinMaxSubArrayBruteForce(Integer[] integers, int k) {
@@ -26,14 +26,14 @@ public class SumMinMaxSubArray {
 		return sum;
 	}
 
-	public static int sumMinMaxSubArrayBruteUsingQueue(Integer[] arr, int k) {
+	public static int sumMinMaxSubArrayUsingQueue(Integer[] arr, int k) {
 		int sum = 0;
 		int n = arr.length;
 
-		// Create maxi and mini dequeue
+		// Step:1 Create maxi and mini dequeue
 		Deque<Integer> maxi = new LinkedList<>(), mini = new LinkedList<>();
 
-		// Process for the first kth window
+		// Step2: Process for the first kth window
 		for (int i = 0; i < k; i++) {
 
 			// remove all previous greater element
@@ -51,13 +51,15 @@ public class SumMinMaxSubArray {
 			mini.addLast(i);
 		}
 
-		// Process rest of the array
+		// Step3: Process rest of the array k-n
 		for (int i = k; i < n; i++) {
-			// element present in the front having largest and smallest element of the
+
+			// Step 4: element present in the front having largest and smallest element of
+			// the
 			// previous window
 			sum += arr[mini.peekFirst()] + arr[maxi.peekFirst()];
 
-			// remove all the element which is out of the window
+			// Step 5: remove all the element which is out of the window
 			while (!mini.isEmpty() && mini.peekFirst() <= i - k) {
 				mini.removeFirst();
 			}
@@ -65,11 +67,10 @@ public class SumMinMaxSubArray {
 				maxi.removeFirst();
 			}
 
-			// remove all previous greater element
+			// Step 6: remove all previous greater element
 			while (!mini.isEmpty() && arr[mini.peekLast()] >= arr[i]) {
 				mini.removeLast();
 			}
-
 			// remove all previous smaller element
 			while (!maxi.isEmpty() && arr[maxi.peekLast()] <= arr[i]) {
 				maxi.removeLast();

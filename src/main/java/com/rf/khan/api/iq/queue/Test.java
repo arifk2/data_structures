@@ -1,53 +1,67 @@
 package com.rf.khan.api.iq.queue;
 
+import java.util.Deque;
 import java.util.LinkedList;
-import java.util.Queue;
 
 public class Test {
 	public static void main(String[] args) {
-		// Example 1
-		int arr1[] = new int[] { -8, 2, 3, -6, 10 };
-		int k1 = 2;
-		firstNegativeInteger(arr1, k1);
-		// Example 2
-
-		int arr2[] = new int[] { 7, 9, -1, 2, 3, 4, -2, -3, -4 };
-		int k2 = 3;
-		firstNegativeInteger(arr2, k2);
-
+		System.out.println(sumMinMaxSubArrayUsingQueue(new Integer[] { 2, 5, -1, 7, -3, -1, -2 }, 4));
+		System.out.println(sumMinMaxSubArrayUsingQueue(new Integer[] { 2, 5, -1, 7 }, 3));
 	}
 
-	private static void firstNegativeInteger(int[] arr, int k) {
-		Queue<Integer> q = new LinkedList<>();
+	private static int sumMinMaxSubArrayUsingQueue(Integer[] arr, int k) {
+		int sum = 0;
+		int n = arr.length;
 
-		// for the first k window 0-k
+		Deque<Integer> maxi = new LinkedList<>(), mini = new LinkedList<>();
+
+		// for the kth window
+
 		for (int i = 0; i < k; i++) {
-			// if the first element is negative then store the index in stack
-			if (arr[i] < 0) {
-				q.add(i);
+			// removing greater element from the last queue
+
+			while (!mini.isEmpty() && arr[mini.peekLast()] >= arr[i]) {
+				mini.removeLast();
 			}
+
+			while (!maxi.isEmpty() && arr[maxi.peekLast()] <= arr[i]) {
+				maxi.removeLast();
+			}
+
+			mini.addLast(i);
+			maxi.addLast(i);
 		}
 
-		// store the first negative number or print
-		if (!q.isEmpty())
-			System.out.print(arr[q.peek()] + " ");
-		else
-			System.out.print("0" + " ");
+		// for the rest of the elements
 
-		// Now for the remaining kth's
-		for (int i = k; i < arr.length; i++) {
-			// condition to remove the element present in the queue
-			while (!q.isEmpty() && q.peek() <= (i - k)) {
-				q.poll();
+		for (int i = k; i < n; i++) {
+			// sum karlo
+			sum += arr[mini.peekFirst()] + arr[maxi.peekFirst()];
+
+			// remove element from the window
+			while (!mini.isEmpty() && mini.peekFirst() <= i - n) {
+				mini.removeFirst();
 			}
-			if (arr[i] < 0)
-				q.add(i);
 
-			if (!q.isEmpty())
-				System.out.print(arr[q.peek()] + " ");
-			else
-				System.out.print("0" + " ");
+			while (!maxi.isEmpty() && maxi.peekFirst() <= i - n) {
+				maxi.removeFirst();
+			}
+
+			while (!mini.isEmpty() && arr[mini.peekLast()] >= arr[i]) {
+				mini.removeLast();
+			}
+
+			while (!maxi.isEmpty() && arr[maxi.peekLast()] <= arr[i]) {
+				maxi.removeLast();
+			}
+
+			mini.addLast(i);
+			maxi.addLast(i);
 		}
-		System.out.println();
+
+		sum += arr[mini.peekFirst()] + arr[maxi.peekFirst()];
+
+		return sum;
 	}
+
 }
