@@ -21,8 +21,9 @@ class DiameterOfBT {
 			return 0; // diameter is also 0
 		}
 		/*
-		 * ldiameter --> diameter of left subtree rdiameter --> Diameter of right
-		 * subtree Get the heights of left and right subtrees in lh and rh. And store
+		 * ldiameter --> diameter of left subtree 
+		 * rdiameter --> Diameter of right subtree 
+		 * Get the heights of left and right subtrees in lh and rh. And store
 		 * the returned values in ldiameter and ldiameter
 		 */
 		int ldiameter = diameterOpt(root.left, lh);
@@ -52,6 +53,7 @@ class DiameterOfBT {
 		}
 		int opt1 = diameterNON(root.left);
 		int opt2 = diameterNON(root.right);
+		
 		int opt3 = height(root.left) + height(root.right) + 1;
 
 		int ans = Math.max(opt1, Math.max(opt2, opt3));
