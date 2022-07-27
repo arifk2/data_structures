@@ -47,6 +47,7 @@ class IsBalancedTree {
 
 		// getting the height max of left height to right right plus node 1
 		heights.h = Math.max(lh.h, rh.h) + 1;
+		
 		boolean heightDiff = Math.abs(lh.h - rh.h) <= 1;
 
 		if (left && right && heightDiff) {

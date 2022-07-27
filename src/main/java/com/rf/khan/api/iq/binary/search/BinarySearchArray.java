@@ -46,9 +46,9 @@ public class BinarySearchArray {
 			// target should be after the mid index, so we need to increase the start index
 			// with mid index and make it as a start index and end index should be same.
 			if (target > input[midIndex]) {
-				startIndex = midIndex + 1;
+				startIndex = midIndex + 1; // go right
 			} else {
-				endIndex = midIndex - 1;
+				endIndex = midIndex - 1; // go left
 			}
 			midIndex = startIndex + (endIndex - startIndex) / 2;
 		}
