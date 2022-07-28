@@ -1,7 +1,6 @@
 package com.rf.khan.api.iq.binary.tree;
 
 import java.util.ArrayList;
-import java.util.Collections;
 
 public class BoundaryTraversal {
 
@@ -66,7 +65,7 @@ public class BoundaryTraversal {
 		// Step3: traverse Leave node
 
 		// ------------------------------
-		// left subtree
+		// left subtreeb
 		traversalLeaf(root.left, result);
 
 		// right subtree
