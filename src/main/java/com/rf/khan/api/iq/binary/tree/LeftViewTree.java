@@ -4,8 +4,8 @@ import java.util.ArrayList;
 
 public class LeftViewTree {
 	Node root;
-	int level = 0;
-	ArrayList<Integer> result = new ArrayList<>();
+	int level;
+	ArrayList<Integer> result ;
 
 	void solve(Node root, ArrayList<Integer> result, int level) {
 
@@ -28,6 +28,10 @@ public class LeftViewTree {
 		if (root == null) {
 			return result;
 		}
+		
+		level = 0;
+		result = new ArrayList<>();
+		
 		solve(root, result, level);
 		return result;
 	}
