@@ -8,7 +8,7 @@ import java.util.Vector;
 public class DiagonalTraverse {
 
 	/**
-	 * This is a recursive methos
+	 * This is a recursive method
 	 * 
 	 * @param root
 	 * @param hd
