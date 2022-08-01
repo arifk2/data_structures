@@ -18,6 +18,9 @@ import java.util.Queue;
  *
  *increase the time by 1 sec if the queue has new element by using boolean flag
  *
+ *
+ *TC- O(n)
+ *SC- O(n)
  */
 public class BurnTree {
 	Node root;
