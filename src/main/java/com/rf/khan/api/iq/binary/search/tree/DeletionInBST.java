@@ -3,24 +3,7 @@ package com.rf.khan.api.iq.binary.search.tree;
 import java.util.LinkedList;
 import java.util.Queue;
 
-class Node {
-	int data;
-	Node left;
-	Node right;
-
-	public Node(int data) {
-		this.data = data;
-		this.left = null;
-		this.right = null;
-	}
-
-	public Node() {
-		// TODO Auto-generated constructor stub
-	}
-
-}
-
-public class BinarySearchTree {
+public class DeletionInBST {
 
 	Node root;
 
@@ -40,17 +23,27 @@ public class BinarySearchTree {
 
 		// binary search tree created
 		levelOrderTraversalSeperator(root);
-		System.out.println("---In Order---");
+		System.out.println();
+		System.out.println("In Order");
 		inOrder(root);
 		System.out.println();
-		System.out.println("---Pre Order---");
-		preOrder(root);
+		System.out.println("-----------------------");
+		deleteNode(root, 50);
+		levelOrderTraversalSeperator(root);
 		System.out.println();
-		System.out.println("---Post Order---");
-		postOrder(root);
-		System.out.println();
-		System.out.println("Minimum data in BST is: " + miniInBST(root));
-		System.out.println("Maximum data in BST is: " + maxInBST(root));
+		System.out.println("In Order");
+		inOrder(root);
+	}
+
+	private void inOrder(Node root) {
+		// base case
+		if (root == null) {
+			return;
+		}
+
+		inOrder(root.left);
+		System.out.print(root.data + " ");
+		inOrder(root.right);
 	}
 
 	/**
@@ -111,84 +104,69 @@ public class BinarySearchTree {
 		}
 	}
 
-	/**
-	 * LNR
-	 * 
-	 * @param root
-	 */
-	void inOrder(Node root) {
+	public Node deleteNode(Node root, int data) {
 		if (root == null) {
-			return;
+			return null;
 		}
-		inOrder(root.left);
-		System.out.print(root.data + " ");
-		inOrder(root.right);
+		if (root.data == data) {
+
+			// 0 Child
+			if (root.left == null && root.right == null) {
+				root = null;
+				return null;
+			}
+
+			// 1 Child
+			// left child
+			if (root.left != null && root.right == null) {
+				Node temp = root.left;
+				root = null;
+				return temp;
+			}
+			// right child
+			if (root.right != null && root.left == null) {
+				Node temp = root.right;
+				root = null;
+				return temp;
+			}
+
+			// 2 child
+			if (root.left != null && root.right != null) {
+				int mini = minValue(root.right);
+				root.data = mini;
+				root.right = deleteNode(root.right, mini);
+				return root;
+			}
+
+		} else if (root.data > data) {
+			root.left = deleteNode(root.left, data);
+			return root;
+		} else {
+			root.right = deleteNode(root.right, data);
+			return root;
+		}
+		return root;
 	}
 
-	/**
-	 * NLR
-	 * 
-	 * @param root
-	 */
-	public void preOrder(Node root) {
-		if (root == null) {
-			return;
-		}
-		System.out.print(root.data + " ");
-		preOrder(root.left);
-		preOrder(root.right);
-	}
-
-	/**
-	 * LRN Left Right Node(print)
-	 * 
-	 * @param root
-	 */
-	public void postOrder(Node root) {
-		if (root == null) {
-			return;
-		}
-		postOrder(root.left);
-		postOrder(root.right);
-		System.out.print(root.data + " ");
-
-	}
-
-	/**
-	 * Minimum data or node in BST
-	 * 
-	 * @param root
-	 * @return
-	 */
-	public int miniInBST(Node root) {
-		if (root == null) {
+	private int minValue(Node right) {
+		if (right == null) {
 			return -1;
 		}
-		Node temp = root;
+		Node temp = right;
 		while (temp.left != null) {
 			temp = temp.left;
 		}
 		return temp.data;
 	}
 
-	public int maxInBST(Node root) {
-		if (root == null) {
-			return -1;
-		}
-		Node temp = root;
-		while (temp.right != null) {
-			temp = temp.right;
-		}
-		return temp.data;
-	}
-
 	public void driver() {
-		int input[] = { 10, 8, 21, 7, 27, 5, 4, 3, -1 };
+		int input[] = { 50, 20, 70, 10, 30, 90, 110, -1 };
 		takeInput(root, input);
 	}
 
 	public static void main(String[] args) {
-		BinarySearchTree b = new BinarySearchTree();
+		DeletionInBST b = new DeletionInBST();
 		b.driver();
 	}
+
 }

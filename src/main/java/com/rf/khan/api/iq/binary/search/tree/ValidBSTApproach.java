@@ -1,28 +1,15 @@
 package com.rf.khan.api.iq.binary.search.tree;
 
+import java.util.ArrayList;
+import java.util.Iterator;
 import java.util.LinkedList;
 import java.util.Queue;
 
-class Node {
-	int data;
-	Node left;
-	Node right;
-
-	public Node(int data) {
-		this.data = data;
-		this.left = null;
-		this.right = null;
-	}
-
-	public Node() {
-		// TODO Auto-generated constructor stub
-	}
-
-}
-
-public class BinarySearchTree {
+public class ValidBSTApproach {
 
 	Node root;
+	Node predeccessor, successor;
+	ArrayList<Integer> result = new ArrayList<>();
 
 	/**
 	 * This method is created to take the input and pass
@@ -40,17 +27,35 @@ public class BinarySearchTree {
 
 		// binary search tree created
 		levelOrderTraversalSeperator(root);
-		System.out.println("---In Order---");
+		System.out.println();
 		inOrder(root);
-		System.out.println();
-		System.out.println("---Pre Order---");
-		preOrder(root);
-		System.out.println();
-		System.out.println("---Post Order---");
-		postOrder(root);
-		System.out.println();
-		System.out.println("Minimum data in BST is: " + miniInBST(root));
-		System.out.println("Maximum data in BST is: " + maxInBST(root));
+		System.out.println(result);
+		System.out.println("Is valid BST? " + isSorted(result));
+		System.out.println("Is valid BST? " + isValidBSTT(root));
+	}
+
+	/**
+	 * Check for the sorted list
+	 * 
+	 * @param list
+	 * @return true of the list is sorted
+	 */
+	public boolean isSorted(ArrayList<Integer> list) {
+		if (list.isEmpty() || list.size() == 1) {
+			return true;
+		}
+		Iterator<Integer> iterator = list.iterator();
+		Integer current, previous = iterator.next();
+
+		while (iterator.hasNext()) {
+			current = iterator.next();
+			if (previous.compareTo(current) > 0) {
+				return false;
+			}
+			previous = current;
+		}
+
+		return true;
 	}
 
 	/**
@@ -111,84 +116,48 @@ public class BinarySearchTree {
 		}
 	}
 
-	/**
-	 * LNR
-	 * 
-	 * @param root
-	 */
-	void inOrder(Node root) {
+	public void inOrder(Node root) {
 		if (root == null) {
 			return;
 		}
 		inOrder(root.left);
-		System.out.print(root.data + " ");
+		result.add(root.data);
 		inOrder(root.right);
 	}
 
-	/**
-	 * NLR
-	 * 
-	 * @param root
-	 */
-	public void preOrder(Node root) {
-		if (root == null) {
-			return;
-		}
-		System.out.print(root.data + " ");
-		preOrder(root.left);
-		preOrder(root.right);
+	public boolean isValidBSTT(Node root) {
+		return isBST(root, Integer.MIN_VALUE, Integer.MAX_VALUE);
 	}
 
 	/**
-	 * LRN Left Right Node(print)
+	 * Is valid BST from the range concept
 	 * 
 	 * @param root
-	 */
-	public void postOrder(Node root) {
-		if (root == null) {
-			return;
-		}
-		postOrder(root.left);
-		postOrder(root.right);
-		System.out.print(root.data + " ");
-
-	}
-
-	/**
-	 * Minimum data or node in BST
-	 * 
-	 * @param root
+	 * @param min
+	 * @param max
 	 * @return
 	 */
-	public int miniInBST(Node root) {
+	boolean isBST(Node root, int min, int max) {
 		if (root == null) {
-			return -1;
+			return true;
 		}
-		Node temp = root;
-		while (temp.left != null) {
-			temp = temp.left;
-		}
-		return temp.data;
-	}
 
-	public int maxInBST(Node root) {
-		if (root == null) {
-			return -1;
+		if (root.data > min && root.data < max) {
+			boolean left = isBST(root.left, min, root.data);
+			boolean right = isBST(root.right, root.data, max);
+			return left && right;
 		}
-		Node temp = root;
-		while (temp.right != null) {
-			temp = temp.right;
-		}
-		return temp.data;
+		return false;
 	}
 
 	public void driver() {
-		int input[] = { 10, 8, 21, 7, 27, 5, 4, 3, -1 };
+		int input[] = { 50, 30, 70, 20, 40, 60, 80, -1 };
 		takeInput(root, input);
 	}
 
 	public static void main(String[] args) {
-		BinarySearchTree b = new BinarySearchTree();
+		ValidBSTApproach b = new ValidBSTApproach();
 		b.driver();
 	}
+
 }
