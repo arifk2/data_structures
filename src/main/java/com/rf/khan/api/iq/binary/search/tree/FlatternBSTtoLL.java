@@ -12,6 +12,17 @@ public class FlatternBSTtoLL {
 		inOrder(root.right, in);
 	}
 
+	/******************************************
+	 * 
+	 * Get the in-order
+	 * 
+	 * Step1: then cut the right node ans join to next node
+	 * Step2: left node null;
+	 * Step3: last node, left and right == null
+	 * 
+	 * @param root
+	 * @return
+	 */
 	public static Node flatten(Node root) {
 		Vector<Node> in = new Vector<Node>();
 		inOrder(root, in);

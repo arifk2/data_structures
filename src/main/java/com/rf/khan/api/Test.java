@@ -1,35 +1,24 @@
 package com.rf.khan.api;
 
 public class Test {
+
 	public static void main(String[] args) {
-		System.out.println(isvalidString("Name"));
-		System.out.println(isvalidString("Name_"));
-		System.out.println(isvalidString("Name_1"));
-		System.out.println(isvalidString("Name_2"));
-		System.out.println(isvalidString("Name_12"));
-		System.out.println(isvalidString("Name_1A"));
-		System.out.println(isvalidString("Name_1A1"));
-		System.out.println(isvalidString(""));
-
+		System.out.println(sumOrProduct(15, 2));
 	}
 
-	public static boolean isvalidString(String input) {
-		String[] str = input.split("_");
-		if (input.isEmpty() || input.charAt(input.length() - 1) == '_' || isNumeric(str[str.length - 1])) {
-			return false;
-		}
-		return true;
-	}
-
-	public static boolean isNumeric(final String str) {
-		if (str == null || str.length() == 0) {
-			return false;
-		}
-		for (char c : str.toCharArray()) {
-			if (!Character.isDigit(c)) {
-				return false;
+	public static long sumOrProduct(int n, int q) {
+		long ans = 1;
+		int m = 1000000007;
+		if (q == 1) {
+			ans = n * (n + 1) / 2;
+			return ans;
+		} else if (q == 2) {
+			for (int i = 1; i <= n; i++) {
+				ans = (ans * i) % m;
 			}
+			return ans;
 		}
-		return true;
+		return -1;
 	}
+
 }
