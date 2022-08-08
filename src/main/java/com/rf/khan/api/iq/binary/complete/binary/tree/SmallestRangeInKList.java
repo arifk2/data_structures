@@ -1,4 +1,4 @@
-package com.rf.khan.api.iq.binary.coomplete.binary.tree;
+package com.rf.khan.api.iq.binary.complete.binary.tree;
 
 import java.util.Arrays;
 import java.util.Comparator;
@@ -23,6 +23,7 @@ class NodeN {
 }
 
 public class SmallestRangeInKList {
+	
 
 	static int[] findSmallestRange(int[][] KSortedArray, int n, int k) {
 		int mini = Integer.MAX_VALUE, maxi = Integer.MIN_VALUE;

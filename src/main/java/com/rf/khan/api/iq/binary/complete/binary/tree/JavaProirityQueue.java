@@ -1,4 +1,4 @@
-package com.rf.khan.api.iq.binary.coomplete.binary.tree;
+package com.rf.khan.api.iq.binary.complete.binary.tree;
 
 import java.util.Collections;
 import java.util.PriorityQueue;
