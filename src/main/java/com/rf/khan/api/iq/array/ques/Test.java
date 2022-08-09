@@ -1,13 +1,21 @@
 package com.rf.khan.api.iq.array.ques;
 
+import java.util.ArrayList;
+import java.util.List;
+
 public class Test {
 
 	public static void main(String[] args) {
-		Integer value1 = new Integer(10);
-		Integer value2 = new Integer(value1);
+		List<Integer> al = new ArrayList<Integer>();
+		al.add(10);
+		al.add(20);
+		al.add(30);
+		al.add(40);
 
-		System.out.println(value1++);
-		System.out.println(value2);
+		Integer[] objects = (Integer[]) al.toArray();
 
+		// Printing array of objects
+		for (int obj : objects)
+			System.out.print(obj + " ");
 	}
 }

@@ -23,7 +23,6 @@ class NodeN {
 }
 
 public class SmallestRangeInKList {
-	
 
 	static int[] findSmallestRange(int[][] KSortedArray, int n, int k) {
 		int mini = Integer.MAX_VALUE, maxi = Integer.MIN_VALUE;
