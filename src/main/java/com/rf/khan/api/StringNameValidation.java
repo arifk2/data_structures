@@ -3,6 +3,7 @@ package com.rf.khan.api;
 public class StringNameValidation {
 	public static void main(String[] args) {
 		System.out.println(isvalidString("Name"));
+		System.out.println(isvalidString("ProjectArif_1"));
 		System.out.println(isvalidString("Name_"));
 		System.out.println(isvalidString("Name_1"));
 		System.out.println(isvalidString("Name_2"));
@@ -10,6 +11,8 @@ public class StringNameValidation {
 		System.out.println(isvalidString("Name_1A"));
 		System.out.println(isvalidString("Name_1A1"));
 		System.out.println(isvalidString(""));
+		
+		System.out.println("INVALID_NAME".contains("INVALID_NAME"));
 
 	}
 

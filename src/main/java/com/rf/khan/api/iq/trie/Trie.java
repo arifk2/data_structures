@@ -105,6 +105,37 @@ public class Trie {
 		return searchUtil(child, word.substring(1));
 	}
 
+	/**
+	 * This method is created to get the word with the prefix
+	 * 
+	 * @param prefix holds the information of the prefix
+	 * @return true/false
+	 */
+	public boolean startsWith(String prefix) {
+		return startsWithUtil(root, prefix);
+	}
+
+	/**
+	 * This is utility method to get the word with the prefix
+	 * 
+	 * @param root
+	 * @param word
+	 * @return
+	 */
+	private boolean startsWithUtil(TrieNode root, String word) {
+		if (word.length() == 0)
+			return true;
+
+		int index = word.charAt(0) - 'A';
+
+		if (root.children[index] != null) {
+			child = root.children[index];
+		} else {
+			return false;
+		}
+		return startsWithUtil(child, word.substring(1));
+	}
+
 	private void remove(String word) {
 		removeUtil(root, word);
 	}
@@ -138,6 +169,8 @@ public class Trie {
 		t.insertWord("ABCD");
 		t.insertWord("TIME");
 		t.insertWord("ARIF");
+		System.out.println("Is start with ? " + t.startsWith("AR"));
+
 		System.out.println("Present or not? " + t.search("ABCD"));
 		t.remove("ABCD");
 		System.out.println("Present or not? " + t.search("ABCD"));
@@ -152,5 +185,7 @@ public class Trie {
 		t.remove("ARIF");
 		System.out.println("Is present? " + t.search("ARIF"));
 		System.out.println("Is present? " + t.search("ROHIT"));
+
+		System.out.println("Is start with ? " + t.startsWith("RO"));
 	}
 }
