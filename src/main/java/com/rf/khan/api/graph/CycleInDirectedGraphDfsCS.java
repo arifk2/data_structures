@@ -14,7 +14,7 @@ import java.util.Map;
  * @author mkhan339
  *
  */
-public class CycleInDirectedGraphCS {
+public class CycleInDirectedGraphDfsCS {
 
 	/**
 	 * This method is created to check that graph is cyclic or not

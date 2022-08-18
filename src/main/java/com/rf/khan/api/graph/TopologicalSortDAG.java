@@ -5,6 +5,12 @@ import java.util.HashMap;
 import java.util.Map;
 import java.util.Stack;
 
+/**
+ * 
+ * @author mkhan339
+ *
+ *         * Time Complexity O(n+e)
+ */
 public class TopologicalSortDAG {
 
 	/**
