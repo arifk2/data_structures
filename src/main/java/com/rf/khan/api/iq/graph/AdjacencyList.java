@@ -1,4 +1,4 @@
-package com.rf.khan.api.graph;
+package com.rf.khan.api.iq.graph;
 
 import java.util.ArrayList;
 

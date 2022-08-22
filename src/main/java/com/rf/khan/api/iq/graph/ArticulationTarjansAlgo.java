@@ -1,4 +1,4 @@
-package com.rf.khan.api.graph;
+package com.rf.khan.api.iq.graph;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -8,8 +8,13 @@ import java.util.Map;
 /**
  * This class is created to get the number or articulation point
  * 
- * Time complexity O(v+e)
+ * Articulation Point: If we remove a node and its all edge, then graph breaks
+ * into two or more component
+ * 
+ * Time complexity O(v+e) 
+ * 
  * Space Complexity O(n)
+ * 
  * @author mkhan339
  *
  */

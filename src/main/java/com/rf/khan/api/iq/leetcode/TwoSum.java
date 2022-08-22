@@ -1,4 +1,4 @@
-package com.rf.khan.api.iq.lc;
+package com.rf.khan.api.iq.leetcode;
 
 import java.util.HashMap;
 
