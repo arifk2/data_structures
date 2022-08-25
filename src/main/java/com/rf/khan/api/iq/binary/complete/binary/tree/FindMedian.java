@@ -6,7 +6,15 @@ import java.util.Collections;
 import java.util.PriorityQueue;
 
 public class FindMedian {
-
+	/**
+	 * This method is to get the median
+	 * 
+	 * @param element
+	 * @param maxHeap
+	 * @param minHeap
+	 * @param median
+	 * @return
+	 */
 	static int getMedian(int element, PriorityQueue<Integer> maxHeap, PriorityQueue<Integer> minHeap, int median) {
 
 		switch ((int) Math.signum(maxHeap.size() - minHeap.size())) {
@@ -47,7 +55,9 @@ public class FindMedian {
 
 	public static int[] findMedian(int[] arr, int n) {
 		ArrayList<Integer> ans = new ArrayList<Integer>();
+		// for max values
 		PriorityQueue<Integer> minHeap = new PriorityQueue<Integer>();
+		// for min values
 		PriorityQueue<Integer> maxHeap = new PriorityQueue<Integer>(Collections.reverseOrder());
 		int median = 0;
 
@@ -55,6 +65,7 @@ public class FindMedian {
 			median = getMedian(arr[i], maxHeap, minHeap, median);
 			ans.add(median);
 		}
+		System.out.println("-> " + ans);
 		int[] intAns = new int[ans.size()];
 		for (int i = 0; i < ans.size(); i++) {
 			intAns[i] = ans.get(i);
@@ -63,8 +74,8 @@ public class FindMedian {
 	}
 
 	public static void main(String[] args) {
-		int[] arr = { 2, 3, 4 };
-		int n = 3;
+		int[] arr = {5, 15, 10, 20, 3};
+		int n = 5;
 		System.out.println(Arrays.toString(findMedian(arr, n)));
 	}
 }

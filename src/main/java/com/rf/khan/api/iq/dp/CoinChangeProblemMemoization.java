@@ -48,11 +48,14 @@ public class CoinChangeProblemMemoization {
 		return mini;
 	}
 
+	/**
+	 * Driver main method
+	 * 
+	 * @param args
+	 */
 	public static void main(String[] args) {
-
 		int num[] = { 1, 2, 3 };
 		int x = 7;
-
 		System.out.println(minimumElements(num, x));
 
 	}

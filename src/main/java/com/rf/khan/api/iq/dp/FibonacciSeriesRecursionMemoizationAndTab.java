@@ -3,7 +3,7 @@ package com.rf.khan.api.iq.dp;
 import java.util.Arrays;
 import java.util.Scanner;
 
-public class FibonacciSeriesRecursionMemoization {
+public class FibonacciSeriesRecursionMemoizationAndTab {
 	public static void main(String[] args) {
 		Scanner sc = new Scanner(System.in);
 		System.out.println("Give input: ");
