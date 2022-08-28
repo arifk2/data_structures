@@ -3,7 +3,7 @@ package com.rf.khan.api.iq.dp;
 import java.util.LinkedList;
 import java.util.Queue;
 
-public class MininumCostTicketsOptimization {
+public class MininumCostTicketsSpaceOptimization {
 
 	public static int minimumCoins(int n, int[] days, int[] cost) {
 		return solveOptimization(n, days, cost);
