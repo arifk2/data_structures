@@ -37,7 +37,6 @@ public class MinScoreTrangulationMCPMPRecursionMem {
 			return dp[i][j];
 
 		int ans = Integer.MAX_VALUE;
-
 		// to determine the kth value
 		for (int k = i + 1; k < j; k++) {
 			ans = Math.min(ans, values[i] * values[j] * values[k] + solveRecursionMem(values, i, k, dp)
