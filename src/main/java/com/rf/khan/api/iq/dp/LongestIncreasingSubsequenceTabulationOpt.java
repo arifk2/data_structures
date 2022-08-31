@@ -20,7 +20,7 @@ public class LongestIncreasingSubsequenceTabulationOpt {
 		int[] nextRow = new int[n + 1];
 
 		for (int current = n - 1; current >= 0; current--) {
-			for (int previous = current; previous >= -1; previous--) {
+			for (int previous = current - 1; previous >= -1; previous--) {
 
 				int include = 0;
 
