@@ -1,7 +1,5 @@
 package com.rf.khan.api.iq.dp;
 
-import java.util.Arrays;
-
 /**
  * Minimum Swap counts to make the sequences increasing
  * 
