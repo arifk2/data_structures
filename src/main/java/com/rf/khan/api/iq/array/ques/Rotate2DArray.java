@@ -1,6 +1,6 @@
 package com.rf.khan.api.iq.array.ques;
 
-public class Rotate2DArray1 {
+public class Rotate2DArray {
 
 	public void rotateArray(int[][] arr) {
 
@@ -61,7 +61,7 @@ public class Rotate2DArray1 {
 	public static void main(String[] args) {
 		int arr[][] = { { 1, 2, 3 }, { 4, 5, 6 }, { 7, 8, 9 } };
 
-		Rotate2DArray1 rotate2dArray = new Rotate2DArray1();
+		Rotate2DArray rotate2dArray = new Rotate2DArray();
 
 		System.out.println("Input Array:" + "\n");
 		rotate2dArray.printArray(arr);
