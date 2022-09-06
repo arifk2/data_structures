@@ -1,9 +1,8 @@
 package com.rf.khan.api.iq.dp;
 
 import java.util.Arrays;
-import java.util.Comparator;
 
-public class MaximumHeightStackingCuboids {
+public class MaximumHeightStackingCuboidsTab {
 
 	/**
 	 * Solving using dp and binary search tree with greedy approach
@@ -77,7 +76,7 @@ public class MaximumHeightStackingCuboids {
 	}
 
 	public static void main(String[] args) {
-		MaximumHeightStackingCuboids m = new MaximumHeightStackingCuboids();
+		MaximumHeightStackingCuboidsTab m = new MaximumHeightStackingCuboidsTab();
 		int[][] cuboids = { { 92, 47, 83 }, { 75, 20, 87 }, { 68, 12, 83 }, { 12, 85, 15 }, { 16, 24, 47 },
 				{ 69, 65, 35 }, { 96, 56, 93 }, { 89, 93, 11 }, { 86, 20, 41 }, { 69, 77, 12 }, { 83, 80, 97 },
 				{ 90, 22, 36 } };

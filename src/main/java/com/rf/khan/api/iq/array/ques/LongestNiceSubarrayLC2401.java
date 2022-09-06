@@ -50,5 +50,6 @@ public class LongestNiceSubarrayLC2401 {
 		LongestNiceSubarrayLC2401 l = new LongestNiceSubarrayLC2401();
 		int arr[] = { 1, 3, 8, 48, 10 };
 		System.out.println(l.longestNiceSubarray(arr));
+		System.out.println(l.longestNiceSubarray(new int[] { 3, 1, 5, 11, 13 }));
 	}
 }
