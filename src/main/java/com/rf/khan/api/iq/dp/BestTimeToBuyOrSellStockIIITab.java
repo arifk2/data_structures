@@ -1,7 +1,5 @@
 package com.rf.khan.api.iq.dp;
 
-import org.bouncycastle.util.Arrays;
-
 /**
  ***********
  * Approach
@@ -18,10 +16,12 @@ import org.bouncycastle.util.Arrays;
  * 
  * Get maximum of the (buy & skip) && (sell & skip)
  * 
+ * Also we need to add the limit to get track the transaction
+ * 
  * @author mkhan339
  *
  */
-public class BestTimeToBuyOrSellStockIISpaceOptm {
+public class BestTimeToBuyOrSellStockIIITab {
 
 	/**
 	 * This method is created to get the maximum profit
@@ -30,47 +30,46 @@ public class BestTimeToBuyOrSellStockIISpaceOptm {
 	 * @return profit amount
 	 */
 	public int maxProfit(int[] prices) {
-
-		return solveSpaceOptimization(prices);
+		return solveTabulation(prices);
 	}
 
 	/**
-	 * This method is created to solve the problem using space optimization.
+	 * This method is created to solve the problem using Tabulation
 	 * 
 	 * @param index  holds the information of the index
 	 * @param prices holds the information of the prices array
 	 * @param canBuy tell buy or sell
 	 * @return maximum profit
 	 */
-	private int solveSpaceOptimization(int[] prices) {
+	private int solveTabulation(int[] prices) {
 		int n = prices.length;
-
-		int[] curr = new int[2];
-		int[] next = new int[2];
+		int[][][] dp = new int[n + 1][2][3];
 
 		for (int index = n - 1; index >= 0; index--) {
 			for (int canBuy = 0; canBuy <= 1; canBuy++) {
+				for (int limit = 1; limit <= 2; limit++) {
 
-				int profit = 0;
-				if (canBuy == 1) {
-					int buyKaro = -prices[index] + next[0];
-					int skipKaro = 0 + next[1];
+					int profit = 0;
+					if (canBuy == 1) {
+						int buuyKaro = -prices[index] + dp[index + 1][0][limit];
+						int skipKaro = 0 + dp[index + 1][1][limit];
 
-					profit = Math.max(buyKaro, skipKaro);
+						profit = Math.max(buuyKaro, skipKaro);
 
-				} else {
-					int sellKaro = +prices[index] + next[1];
-					int skipKaro = 0 + next[0];
+					} else {
+						int sellKaro = 0;
+						if (limit - 1 >= 0)
+							sellKaro = +prices[index] + dp[index + 1][1][limit - 1];
+						int skipKaro = 0 + dp[index + 1][0][limit];
 
-					profit = Math.max(sellKaro, skipKaro);
-
+						profit = Math.max(sellKaro, skipKaro);
+					}
+					dp[index][canBuy][limit] = profit;
 				}
-				curr[canBuy] = profit;
 			}
-			next = curr;
-
 		}
-		return next[1];
+
+		return dp[0][1][2];
 	}
 
 	/**
@@ -79,8 +78,8 @@ public class BestTimeToBuyOrSellStockIISpaceOptm {
 	 * @param args
 	 */
 	public static void main(String[] args) {
-		int[] prices = { 1, 2, 3, 4, 5, 6, 7 };
-		BestTimeToBuyOrSellStockIISpaceOptm b = new BestTimeToBuyOrSellStockIISpaceOptm();
+		int[] prices = { 3, 3, 5, 0, 0, 3, 1, 4 };
+		BestTimeToBuyOrSellStockIIITab b = new BestTimeToBuyOrSellStockIIITab();
 		System.out.println(b.maxProfit(prices));
 	}
 }
