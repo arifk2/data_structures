@@ -3,6 +3,8 @@ package com.rf.khan.api.iq.array.ques;
 /**
  * 
  * @author mkhan339
+ * 
+ * & Operation should be 0
  *
  */
 public class LongestNiceSubarrayLC2401 {
