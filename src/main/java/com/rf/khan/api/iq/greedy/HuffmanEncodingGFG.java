@@ -95,3 +95,15 @@ public class HuffmanEncodingGFG {
 
 	}
 }
+
+//********** Working for the GFG test case **********
+//PriorityQueue<Node> pq = new PriorityQueue<>(new Comparator<Node>() {
+//
+//	@Override
+//	public int compare(Node o1, Node o2) {
+//	        if(o1.data == o2.data)
+//	            return 1;
+//	         else 
+//	            return o1.data - o2.data;
+//	}
+//});
