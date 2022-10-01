@@ -8,7 +8,7 @@ import java.util.Comparator;
  * 
  * @author mkhan339
  * 
- *         TC : n log n , n*
+ *         TC : n log n + n*k
  *
  */
 public class JobSequencingProblemGFG {

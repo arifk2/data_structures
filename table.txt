@@ -1,0 +1,6 @@
+Name	Age		Gender	Salary
+Arif	27		Male	1L
+Khan	23		male	2L
+Sanam	22		female	50k
+Rohita	22		female	20k
+				Total	2.5L	
