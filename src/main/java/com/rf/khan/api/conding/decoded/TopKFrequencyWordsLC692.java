@@ -48,7 +48,7 @@ public class TopKFrequencyWordsLC692 {
 		while (!q.isEmpty())
 			result.add(q.poll());
 
-		// Collections.reverse(result);
+		 Collections.reverse(result);
 
 		return result;
 	}
