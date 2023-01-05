@@ -10,8 +10,9 @@ public class MinimumArrowsBurstBalloonsLC452 {
 	}
 
 	public int findMinArrowShots(int[][] points) {
-		Arrays.sort(points, (a, b) -> a[1] - b[1]);
-
+		//Arrays.sort(points, (a, b) -> a[1] - b[1]);
+		Arrays.sort(points, (a, b) -> Integer.compare(a[1], b[1]));
+		
 		int arrow = 1;
 		int reach = points[0][1];
 
