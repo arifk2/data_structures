@@ -4,6 +4,7 @@ public class Test {
 
 	public static void main(String[] args) {
 		System.out.println(sumOrProduct(15, 2));
+		System.out.println("*".repeat(100));
 	}
 
 	public static long sumOrProduct(int n, int q) {
