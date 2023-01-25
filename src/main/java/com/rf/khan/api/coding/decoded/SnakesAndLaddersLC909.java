@@ -56,6 +56,13 @@ public class SnakesAndLaddersLC909 {
 		return -1;
 	}
 
+	/**
+	 * How to find the coordinates
+	 * 
+	 * @param currValue
+	 * @param n
+	 * @return
+	 */
 	private int[] findCoordinates(int currValue, int n) {
 		int row = n - (currValue - 1) / n - 1;
 		int col = (currValue - 1) % n;
