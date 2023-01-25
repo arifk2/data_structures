@@ -5,8 +5,8 @@ import java.util.HashMap;
 public class TwoSum {
 
 	public static void main(String[] args) {
-		int[] nums = { 7, 3, 2, 11, 2, 1 };
-		int target = 13;
+		int[] nums = { 7, 3, 4, 5, 7, 5, 11 };
+		int target = 14;
 
 		// brute force
 
