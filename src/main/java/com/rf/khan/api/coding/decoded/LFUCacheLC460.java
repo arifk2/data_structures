@@ -23,8 +23,8 @@ public class LFUCacheLC460 {
 		if (!keyValueMap.containsKey(key)) {
 			return -1;
 		}
+		// update the key frequency if we perform get operation
 		int frequency = keyFrequencyMap.get(key);
-
 		freqKeysMap.get(frequency).remove(key);
 		if (frequency == min && freqKeysMap.get(frequency).size() == 0) {
 			min++;
@@ -53,7 +53,7 @@ public class LFUCacheLC460 {
 			return;
 		}
 
-		// if key is not exist and capacity is full, then evict least frequecy used
+		// if key is not exist and capacity is full, then evict least frequency used
 		if (keyValueMap.size() >= cap) {
 			int keyToBeEvicted = freqKeysMap.get(min).iterator().next();
 			freqKeysMap.get(min).remove(keyToBeEvicted);
