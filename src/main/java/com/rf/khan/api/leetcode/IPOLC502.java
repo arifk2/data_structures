@@ -1,4 +1,4 @@
-package com.rf.khan.api.iq.leetcode;
+package com.rf.khan.api.leetcode;
 
 import java.util.Arrays;
 import java.util.Collections;
