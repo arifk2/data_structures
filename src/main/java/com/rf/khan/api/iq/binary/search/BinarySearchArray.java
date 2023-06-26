@@ -9,7 +9,7 @@ public class BinarySearchArray {
 		System.out.println(
 				"Binary Search of the even array and the index of the target number is : " + searchIndex(evenArray, 0));
 		System.out.println("Binary Search of the given odd array and the index of the target number is : "
-				+ searchIndex(oddArray, 0));
+				+ searchIndex(oddArray, 8));
 
 	}
 

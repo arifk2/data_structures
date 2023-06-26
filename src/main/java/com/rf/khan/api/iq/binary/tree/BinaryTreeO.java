@@ -25,7 +25,7 @@ class Node {
 		data = scanner.nextInt();
 
 		root = new Node(data);
-
+		// base case
 		if (data == -1) {
 			return null;
 		}
