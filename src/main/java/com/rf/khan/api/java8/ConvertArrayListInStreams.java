@@ -32,5 +32,20 @@ public class ConvertArrayListInStreams {
 		System.out.println("\n4. Use stream for filtering, UPPERCASE conevrsion, sorting and display");
 		stringList.stream().filter(s -> s.startsWith("a")).map(String::toUpperCase).forEach(System.out::println);
 
+		// In one line find whether any record start with 'a' in stringList
+		boolean anyRecordStartWithA = stringList.stream().anyMatch(s -> s.startsWith("a"));
+		System.out.println("Any record start with a : " + anyRecordStartWithA);
+
+		// In one line find whether all records start with 'a' in stringList
+		boolean allRecordStartWithA = stringList.stream().allMatch(s -> s.startsWith("a"));
+		System.out.println("All record start with a : " + allRecordStartWithA);
+
+		// In one line find whether none of the records start with 'b' in stringList
+		boolean noneStartWithB = stringList.stream().noneMatch(s -> s.startsWith("b"));
+		System.out.println("None record start with b : " + noneStartWithB);
+
+		// In one line count records start with 'a' in stringList
+		long countRecordsStartWithA = stringList.stream().filter(s -> s.startsWith("a")).count();
+		System.out.println("Count of records start with a : " + countRecordsStartWithA);
 	}
 }
