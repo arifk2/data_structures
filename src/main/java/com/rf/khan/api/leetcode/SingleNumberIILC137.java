@@ -18,6 +18,8 @@ public class SingleNumberIILC137 {
 		for (int i : nums)
 			mapCount.put(i, mapCount.getOrDefault(i, 0) + 1);
 
+		System.out.println(mapCount);
+
 		for (Map.Entry<Integer, Integer> entrySet : mapCount.entrySet()) {
 			if (entrySet.getValue() == 1)
 				return entrySet.getKey();
