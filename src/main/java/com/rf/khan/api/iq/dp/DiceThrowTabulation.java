@@ -1,7 +1,5 @@
 package com.rf.khan.api.iq.dp;
 
-import org.bouncycastle.util.Arrays;
-
 /**
  * This class is create to get the number of the distinct throw of dice to make
  * the target.

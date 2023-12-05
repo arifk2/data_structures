@@ -1,9 +1,8 @@
 package com.rf.khan.api.leetcode;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
-
-import org.bouncycastle.util.Arrays;
 
 /**
  * https://leetcode.com/problems/find-all-good-indices/

@@ -1,6 +1,6 @@
 package com.rf.khan.api.iq.dp;
 
-import org.bouncycastle.util.Arrays;
+import java.util.Arrays;
 
 public class CountDearrangementTabulation {
 	static int MOD = 1000000007;

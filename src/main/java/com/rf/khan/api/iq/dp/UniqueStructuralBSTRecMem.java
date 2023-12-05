@@ -1,6 +1,6 @@
 package com.rf.khan.api.iq.dp;
 
-import org.bouncycastle.util.Arrays;
+import java.util.Arrays;
 
 /**
  * This class is created to get the max total number of the unique binary search

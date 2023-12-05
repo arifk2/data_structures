@@ -1,12 +1,20 @@
 package com.rf.khan.api.iq.dp;
 
+import java.util.Arrays;
 import java.util.HashMap;
 import java.util.Map;
 
-import org.bouncycastle.util.Arrays;
+
 
 public class MinimumCostTreeFromLeafRecMem {
-
+	class Pair {
+		int a;
+		int b;
+		public Pair(int a, int b) {
+			this.a = a;
+			this.b = b;
+		}
+	}
 	/**
 	 * This method is created to get the minimum cost from the leaf value
 	 * 

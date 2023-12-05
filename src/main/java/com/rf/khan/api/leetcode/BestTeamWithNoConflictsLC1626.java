@@ -1,10 +1,9 @@
 package com.rf.khan.api.leetcode;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.Collections;
 import java.util.List;
-
-import org.bouncycastle.util.Arrays;
 
 public class BestTeamWithNoConflictsLC1626 {
 

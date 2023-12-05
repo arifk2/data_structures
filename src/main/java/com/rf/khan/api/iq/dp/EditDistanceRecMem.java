@@ -1,6 +1,6 @@
 package com.rf.khan.api.iq.dp;
 
-import org.bouncycastle.util.Arrays;
+import java.util.Arrays;
 
 /**
  * This class is created to find the minimum cost to make word1 as word2, (edit

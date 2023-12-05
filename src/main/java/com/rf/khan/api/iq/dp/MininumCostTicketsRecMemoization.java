@@ -1,6 +1,6 @@
 package com.rf.khan.api.iq.dp;
 
-import org.bouncycastle.util.Arrays;
+import java.util.Arrays;
 
 public class MininumCostTicketsRecMemoization {
 
