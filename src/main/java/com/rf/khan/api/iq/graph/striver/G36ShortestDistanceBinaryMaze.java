@@ -4,6 +4,9 @@ import java.util.Arrays;
 import java.util.LinkedList;
 import java.util.Queue;
 
+/**
+ * https://www.geeksforgeeks.org/problems/shortest-path-in-a-binary-maze-1655453161/1
+ */
 class Tupple {
 	int first;
 	int second;

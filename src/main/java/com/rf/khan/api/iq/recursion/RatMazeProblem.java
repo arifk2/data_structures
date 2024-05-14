@@ -6,13 +6,16 @@ import java.util.Collections;
 public class RatMazeProblem {
 
 	public static void main(String[] args) {
-		int maze[][] = { { 1, 0, 0, 0 }, { 1, 1, 0, 1 }, { 1, 1, 0, 0 }, { 0, 1, 1, 1 } };
+		int maze[][] = { { 1, 0, 0, 0 },
+						{  1, 1, 0, 1 }, 
+						{  1, 1, 0, 0 }, 
+						{  0, 1, 1, 1 } };
 		System.out.println(solveMaze(maze, maze.length));
 	}
 
 	private static ArrayList<String> solveMaze(int maze[][], int size) {
 		ArrayList<String> ans = new ArrayList<>();
-
+		//base condition no ans
 		if (maze[0][0] == 0) {
 			return ans;
 		}
