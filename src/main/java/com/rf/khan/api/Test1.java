@@ -1,49 +1,95 @@
 package com.rf.khan.api;
 
-import java.util.Vector;
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.LinkedList;
+import java.util.Queue;
 
 public class Test1 {
 
 	public static void main(String[] args) {
-		int arr[] = { 6, 2, 4 };
+		Test1 test = new Test1();
+		int n = 4;
+		int[][] flights = { { 0, 1, 100 }, { 1, 2, 100 }, { 2, 0, 100 }, { 1, 3, 600 }, { 2, 3, 200 } };
+		int src = 0, dst = 3, k = 1;
+		int[][] flight2 = { { 0, 1, 100 }, { 1, 2, 100 }, { 0, 2, 500 } };
 
-		int n = arr.length;
+		System.out.println(test.findCheapestPrice(n, flights, src, dst, k));
+		System.out.println(test.findCheapestPrice(3, flight2, 0, 2, 1));
 
-		// Function call
-		System.out.print(MinCostTree(arr, n));
 	}
 
-	/**
-	 * 
-	 * @param arr
-	 * @param n
-	 * @return
-	 */
-	private static int MinCostTree(int[] arr, int n) {
-		int ans = 0;
-		Vector<Integer> st = new Vector<Integer>();
-		st.add(Integer.MAX_VALUE);
+	public int findCheapestPrice(int n, int[][] flights, int src, int dst, int k) {
 
-		for (int i = 0; i < n; i++) {
-			while (st.get(st.size() - 1) <= arr[i]) {
+		// Step 1 create adjacency node
+		ArrayList<ArrayList<Pair>> adj = new ArrayList<>();
+		for (int i = 0; i < n; i++)
+			adj.add(new ArrayList<>());
 
-				// get the top element
-				int top = st.get(st.size() - 1);
+		int m = flights.length;
 
-				// remove
-				st.remove(st.size() - 1);
+		for (int i = 0; i < m; i++) {
+			adj.get(flights[i][0]).add(new Pair(flights[i][1], flights[i][2]));
+		}
 
-				ans += top * Math.min(st.get(st.size() - 1), arr[i]);
+		// Step2: create queue of type {stop, node, cost}
+		Queue<Tupple> q = new LinkedList<>();
+		q.add(new Tupple(0, src, 0));
+
+		// Step3: Create distance array
+		int[] distance = new int[n];
+		Arrays.fill(distance, (int) 1e9);
+		distance[src] = 0;
+
+		// iterate over queue
+		while (!q.isEmpty()) {
+			Tupple itr = q.poll();
+			int stops = itr.stop;
+			int node = itr.node;
+			int cost = itr.cost;
+
+			// if we reach more than stops then no need of execution
+			if (stops > k)
+				continue;
+
+			// iterate over adj node
+			for (Pair iter : adj.get(node)) {
+				int adjNode = iter.first;
+				int edW = iter.second;
+				if (cost + edW < distance[adjNode] && stops <= k) {
+					distance[adjNode] = cost + edW;
+
+					// put it in the queue
+					q.add(new Tupple(stops + 1, adjNode, cost + edW));
+				}
 			}
-			st.add(arr[i]);
 		}
 
-		// for the remaining stack from the stack
+		if (distance[dst] == 1e9)
+			return -1;
 
-		for (int i = 2; i < st.size(); i++) {
-			ans += st.get(i) * st.get(i - 1);
+		return distance[dst];
+	}
+
+	class Pair {
+		int first;
+		int second;
+
+		public Pair(int first, int second) {
+			this.first = first;
+			this.second = second;
 		}
+	}
 
-		return ans;
+	class Tupple {
+		int stop;
+		int node;
+		int cost;
+
+		public Tupple(int stop, int node, int cost) {
+			this.stop = stop;
+			this.node = node;
+			this.cost = cost;
+		}
 	}
 }
